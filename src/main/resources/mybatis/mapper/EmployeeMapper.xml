@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.EmployeeMapper">
+
+    <insert id="save" parameterType="com.pojo.Employee">
+        insert into employee (id,lastName,email,gender,departmentId,birthday,salary) values (#{id},#{lastName},#{email},#{gender},#{departmentId},#{birthday},#{salary})
+    </insert>
+
+    <update id="update" parameterType="com.pojo.Employee">
+        update employee set lastName=#{lastName},email=#{email},gender=#{gender},departmentId=#{departmentId},birthday=#{birthday},salary=#{salary} where id=#{id}
+    </update>
+
+    <select id="getAll" resultType="com.pojo.Employee">
+        select * from employee
+    </select>
+
+    <select id="getEmpById" resultType="com.pojo.Employee">
+        select * from employee where id=#{id}
+    </select>
+    <select id="search" resultType="com.pojo.Employee">
+        select * from employee where lastName like '%${word}%'
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        delete from employee where id=#{id}
+    </delete>
+
+
+</mapper>
